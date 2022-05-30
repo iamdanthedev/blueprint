@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "czproject/git-php": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/config": "^9.11.0",
         "laravel-doctrine/orm": "^1.8",

@@ -34,6 +34,14 @@ class Tenant
         $this->workspaces = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function toJson() {
         return [
             'id' => $this->id,

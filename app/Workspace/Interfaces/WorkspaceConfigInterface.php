@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Workspace;
+namespace App\Workspace\Interfaces;
 
 class WorkspaceConfigInterface
 {

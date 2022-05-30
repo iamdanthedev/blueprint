@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Entities\Project;
 use App\Entities\Tenant;
 use App\Entities\Workspace;
+use App\Workspace\ProjectAccessor;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Http\Request;
 use LaravelDoctrine\ORM\Serializers\JsonSerializer;
@@ -30,10 +31,14 @@ class TestController extends Controller
 
         $this->em->flush();
 
+        $projectAccessor = new ProjectAccessor($tenant->getId(), $workspace->getId(), $project->getId());
+        $projectAccessor->init();
+
         return [
             'tenant' => $tenant->toJson(),
             'workspace' => $workspace->toJson(),
-            'project' => $project->toJson()
+            'project' => $project->toJson(),
+            'branch' => $projectAccessor->getCurrentBranchName()
         ];
     }
 }
