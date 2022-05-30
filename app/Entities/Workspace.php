@@ -34,5 +34,12 @@ class Workspace
         $this->projects = new ArrayCollection();
     }
 
+    public function toJson() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'tenant' => $this->tenant->toJson()
+        ];
+    }
 
 }

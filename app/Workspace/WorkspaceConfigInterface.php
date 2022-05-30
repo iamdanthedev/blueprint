@@ -2,7 +2,7 @@
 
 namespace App\Workspace;
 
-class WorkspaceConfig
+class WorkspaceConfigInterface
 {
     public string $tenantId;
     public string $workspaceId;

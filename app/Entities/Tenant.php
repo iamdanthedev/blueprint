@@ -33,4 +33,11 @@ class Tenant
         $this->name = $name;
         $this->workspaces = new ArrayCollection();
     }
+
+    public function toJson() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
+    }
 }
