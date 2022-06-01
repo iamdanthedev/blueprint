@@ -45,8 +45,6 @@ class ProjectAccessor implements Interfaces\ProjectAccessorInterface
         file_put_contents("{$this->repositoryPath}/blueprint.config.json", "{}");
         $repo->addAllChanges();
         $repo->commit('Add Blueprint configuration file');
-
-        dd($repo->getCurrentBranchName());
     }
 
 

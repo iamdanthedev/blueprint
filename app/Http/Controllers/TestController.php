@@ -7,8 +7,7 @@ use App\Entities\Tenant;
 use App\Entities\Workspace;
 use App\Workspace\ProjectAccessor;
 use Doctrine\ORM\EntityManagerInterface;
-use Illuminate\Http\Request;
-use LaravelDoctrine\ORM\Serializers\JsonSerializer;
+use Illuminate\Support\Facades\Response;
 
 class TestController extends Controller
 {
@@ -34,11 +33,13 @@ class TestController extends Controller
         $projectAccessor = new ProjectAccessor($tenant->getId(), $workspace->getId(), $project->getId());
         $projectAccessor->init();
 
-        return [
-            'tenant' => $tenant->toJson(),
-            'workspace' => $workspace->toJson(),
-            'project' => $project->toJson(),
+        $result = [
+            'tenant' => $tenant,
+            'workspace' => $workspace,
+            'project' => $project,
             'branch' => $projectAccessor->getCurrentBranchName()
         ];
+
+        return Response::json($result);
     }
 }

@@ -13,19 +13,19 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity]
-#[Table(name: 'blp_tenant')]
-class Tenant
+#[Table(name: "blp_tenant")]
+class Tenant extends BaseEntity
 {
     #[Id]
-    #[Column(type: 'uuid')]
-    #[GeneratedValue(strategy: 'CUSTOM')]
-    #[CustomIdGenerator(class: 'Ramsey\Uuid\Doctrine\UuidGenerator')]
+    #[Column(type: "uuid")]
+    #[GeneratedValue(strategy: "CUSTOM")]
+    #[CustomIdGenerator(class: "Ramsey\Uuid\Doctrine\UuidGenerator")]
     protected string $id;
 
-    #[Column(type: 'string')]
+    #[Column(type: "string")]
     protected string $name;
 
-    #[OneToMany(targetEntity: 'Workspace', mappedBy: 'tenant')]
+    #[OneToMany(targetEntity: "Workspace", mappedBy: "tenant")]
     private Collection $workspaces;
 
     public function __construct(string $name)
@@ -42,10 +42,11 @@ class Tenant
         return $this->id;
     }
 
-    public function toJson() {
-        return [
-            'id' => $this->id,
-            'name' => $this->name
-        ];
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'bpl_workspace')]
-class Workspace
+class Workspace extends BaseEntity
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
@@ -22,6 +22,7 @@ class Workspace
     #[ORM\ManyToOne(targetEntity: 'Tenant', inversedBy: '')]
     private Tenant $tenant;
 
+    /** @return Collection<Project> */
     #[ORM\OneToMany(targetEntity: 'Project', mappedBy: 'workspaces')]
     #[ORM\JoinColumn(name: 'tenant_id', referencedColumnName: 'id')]
     private Collection $projects;

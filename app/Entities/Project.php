@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'blp_project')]
-class Project
+class Project extends BaseEntity
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
